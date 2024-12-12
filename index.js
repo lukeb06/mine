@@ -11,6 +11,7 @@ class Camera {
             host: 'fishcraft.live',
             username: `mrcamera${index}`,
             auth: 'offline',
+            version: '1.21.1',
         });
         this.index = +index;
     }
