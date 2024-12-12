@@ -1,5 +1,5 @@
 const mineflayer = require('mineflayer')
-const mineflayerViewer = require('prismarine-viewer').mineflayer
+const mineflayerViewer = require('prismarine-neoviewer').mineflayer
 //const { standalone } = require('prismarine-viewer');
 
 function sleep(ms) {
