@@ -14,6 +14,6 @@
   "dependencies": {
     "express": "^4.21.2",
     "mineflayer": "^4.23.0",
-    "prismarine-neoviewer": "^1.28.0"
+    "prismarine-neoviewer": "^1.28.1"
   }
 }
