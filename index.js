@@ -17,7 +17,7 @@ class Camera {
 
     init() {
         this.bot.once('spawn', async () => {
-            mineflayerViewer(this.bot, { port: 3007 - this.index, firstPerson: true });
+            mineflayerViewer(this.bot, { port: 3007 - this.index, firstPerson: true, viewDistance: 2 });
             //standalone(this.bot, { port: 3007 + this.index });
             await sleep(200);
             this.bot.chat('/register luke0215 luke0215');
