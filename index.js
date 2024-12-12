@@ -17,14 +17,14 @@ class Camera {
 
     init() {
         this.bot.once('spawn', async () => {
-            mineflayerViewer(this.bot, { port: 6027 - this.index, firstPerson: false, viewDistance: 2 });
+            this.bot.physics.gravity = 0;
+            mineflayerViewer(this.bot, { port: 6027 - this.index, firstPerson: false, viewDistance: 3 });
             //standalone(this.bot, { port: 3007 + this.index });
             await sleep(200);
             this.bot.chat('/register luke0215 luke0215');
             await sleep(200);
             this.bot.chat('/login luke0215');
             await sleep(1000);
-            this.bot.physics.gravity = 0;
             this.bot.chat('/gmsp');
         });
 
