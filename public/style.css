@@ -32,8 +32,9 @@ body {
     border: none;
     box-shadow: 0 0 0.5rem #000;
     border-radius: 0.5rem;
+    display:none;
 }
 
-.camera[src=""] {
-    display: none;
+.camera.active {
+    display: block;
 }
