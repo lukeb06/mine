@@ -2,10 +2,11 @@
   "name": "mine",
   "module": "index.ts",
   "scripts": {
-      "start": "concurrently --kill-others \"node index.js 0\" \"node index.js 1\" \"node index.js 2\" \"node index.js 3\" \"node index.js 4\" \"node index.js 5\""
-  }
+    "start": "concurrently --kill-others \"node index.js 0\" \"node index.js 1\" \"node index.js 2\" \"node index.js 3\" \"node index.js 4\" \"node index.js 5\""
+  },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "concurrently": "^9.1.0"
   },
   "peerDependencies": {
     "typescript": "^5.7.2"
