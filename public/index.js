@@ -4,6 +4,7 @@ document.querySelectorAll('.camera').forEach(camera => {
     camera.src = `http://${window.location.hostname}:${port}`;
     try {
         fetch(camera.src, { mode: 'no-cors' }).then(r => {
+            console.log(r);
             if (r.ok) {
                 camera.classList.add('active');
             }
