@@ -26,7 +26,7 @@ class Camera {
             await sleep(200);
             this.bot.chat('/login luke0215');
             await sleep(1000);
-            this.bot.chat('/gmsp');
+            //this.bot.chat('/gmsp');
         });
 
         this.bot.on('message', message => {
