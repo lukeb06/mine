@@ -8,6 +8,12 @@ document.querySelectorAll('.camera').forEach(camera => {
     camera.before(wrapper);
     wrapper.appendChild(camera);
 
+    const viewBtn = document.createElement('a');
+    viewBtn.className = 'view-btn';
+    viewBtn.href = `http://${window.location.hostname}:${port}`;
+    viewBtn.textContent = 'Control Cam';
+    wrapper.appendChild(viewBtn);
+
     camera.src = `http://${window.location.hostname}:${port}`;
 
     try {
