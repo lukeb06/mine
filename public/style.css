@@ -57,7 +57,7 @@ body {
     cursor: pointer;
 }
 
-.camera-wrapper:hover .view-btn {
+.camera-wrapper.active:hover .view-btn {
     bottom: 0;
 }
 
