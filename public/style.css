@@ -62,6 +62,7 @@ body {
     background-color: #111;
     font-weight: bold;
     background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1px);
     z-index: 2;
 }
 
