@@ -5,6 +5,8 @@ document.querySelectorAll('.camera').forEach(camera => {
     try {
         fetch(camera.src, { mode: 'no-cors' }).then(r => {
             camera.classList.add('active');
+
+            //const 
         });
     } catch (e) { }
 });
