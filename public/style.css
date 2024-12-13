@@ -88,3 +88,18 @@ body {
 .view-btn:hover {
     text-decoration: underline;
 }
+
+#loadOverlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    z-index: 100;
+}
+
+#loadOverlay.hidden {
+    opacity: 0;
+}

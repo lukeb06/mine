@@ -31,6 +31,7 @@ function registerCamera(camera) {
 async function main() {
     const cameras = Array.from(document.querySelectorAll('.camera'));
     await Promise.all(cameras.map(registerCamera));
+    document.querySelector('#loadOverlay').classList.add('hidden');
     console.log('Cameras registered');
 }
 
