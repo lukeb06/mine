@@ -21,7 +21,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.25rem;
 }
 
 .camera {
@@ -37,6 +37,6 @@ body {
 
 .camera-wrapper {
     box-shadow: 0 0 0.5rem #000;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     overflow: hidden;
 }
