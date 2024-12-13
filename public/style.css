@@ -19,7 +19,7 @@ body {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 1rem;
 }
@@ -32,9 +32,12 @@ body {
     border: none;
     box-shadow: 0 0 0.5rem #000;
     border-radius: 0.5rem;
+}
+
+.camera-wrapper {
     display: none;
 }
 
-.camera.active {
+.camera-wrapper.active {
     display: block;
 }
