@@ -40,6 +40,25 @@ body {
     border-radius: 0.25rem;
     overflow: hidden;
     position: relative;
+    background-color: #aaa;
+}
+
+@keyframes pulse {
+    0% {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    50% {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    100% {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.camera-wrapper:not(.active) {
+    animation: pulse 1s ease-in-out infinite;
 }
 
 .view-btn {
