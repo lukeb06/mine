@@ -1,6 +1,5 @@
-async function main() {
-    const cameras = Array.from(document.querySelectorAll('.camera'));
-    for await (const camera of cameras) {
+function registerCamera(camera) {
+    return new Promise(async (resolve, reject) => {
         const index = +camera.dataset.index;
         const port = 6027 - index;
 
@@ -22,8 +21,17 @@ async function main() {
             await fetch(camera.src, { mode: 'no-cors' })
             camera.classList.add('active');
             wrapper.classList.add('active');
-        } catch (e) { }
-    }
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
+    });
+}
+
+async function main() {
+    const cameras = Array.from(document.querySelectorAll('.camera'));
+    await Promise.all(cameras.map(registerCamera));
+    console.log('Cameras registered');
 }
 
 main();
