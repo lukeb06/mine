@@ -12,9 +12,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "canvas": "^2.11.2",
     "express": "^4.21.2",
     "mineflayer": "^4.23.0",
-    "prismarine-neoviewer": "^1.29.0"
+    "prismarine-neoviewer": "^1.29.1"
   }
 }
