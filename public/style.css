@@ -45,20 +45,20 @@ body {
 
 @keyframes pulse {
     0% {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.05);
     }
 
     50% {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
     100% {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.05);
     }
 }
 
 .camera-wrapper:not(.active) {
-    animation: pulse 1s ease-in-out infinite;
+    animation: pulse 3s ease-in-out infinite;
 }
 
 .view-btn {
