@@ -39,10 +39,28 @@ body {
     box-shadow: 0 0 0.5rem #000;
     border-radius: 0.25rem;
     overflow: hidden;
+    position: relative;
 }
 
 .view-btn {
     position: absolute;
-    top: 0;
     left: 0;
+    bottom: -30px;
+    transition: bottom .15s ease-out;
+    background: #d33;
+    width: 100%;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.camera-wrapper:hover .view-btn {
+    bottom: 0;
+}
+
+.view-btn:hover {
+    text-decoration: underline;
 }
