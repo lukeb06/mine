@@ -19,6 +19,7 @@ document.querySelectorAll('.camera').forEach(camera => {
     try {
         fetch(camera.src, { mode: 'no-cors' }).then(r => {
             camera.classList.add('active');
+            wrapper.classList.add('active');
         });
     } catch (e) { }
 });
