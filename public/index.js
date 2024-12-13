@@ -23,7 +23,7 @@ function registerCamera(camera) {
             wrapper.classList.add('active');
             resolve();
         } catch (e) {
-            reject(e);
+            resolve();
         }
     });
 }
