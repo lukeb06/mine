@@ -5,10 +5,12 @@ document.querySelectorAll('.camera').forEach(camera => {
     try {
         fetch(camera.src, { mode: 'no-cors' }).then(r => {
             const wrapper = document.createElement('div');
-            wrapper.className = 'camera-wrapper active';
+            wrapper.className = 'camera-wrapper';
 
             camera.before(wrapper);
             wrapper.appendChild(camera);
+
+            camera.classList.add('active');
         });
     } catch (e) { }
 });
