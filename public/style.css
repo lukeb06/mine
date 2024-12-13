@@ -96,7 +96,7 @@ body {
     height: 100%;
     background: #333;
     opacity: 1;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 0.25s ease-out 0.1s;
     z-index: 100;
 }
 
