@@ -10,7 +10,7 @@ SERVER = "node server.js"
 
 CAMS = []
 for i in range(CAM_COUNT):
-    CAMS.append(f"node index.js {i}")
+    CAMS.append(f"node index.js {i}", shell=True)
 
 
 def create_background_process(cmd: str):
