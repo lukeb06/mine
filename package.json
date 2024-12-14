@@ -2,7 +2,7 @@
   "name": "mine",
   "module": "index.ts",
   "scripts": {
-    "start": "concurrently --kill-others \"node index.js 0\" \"timeout /t 5 && node index.js 1\" \"timeout /t 10 && node index.js 2\" \"timeout /t 15 && node index.js 3\" \"timeout /t 20 && node index.js 4\" \"timeout /t 25 && node index.js 5\""
+    "start": "activate.bat && py manager.py"
   },
   "devDependencies": {
     "@types/bun": "latest",

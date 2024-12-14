@@ -118,6 +118,8 @@ out
 
 # Nuxt.js build / generate output
 
+.venv/
+
 .nuxt
 dist
 
