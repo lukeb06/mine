@@ -33,9 +33,5 @@ def create_processes():
     return procs
 
 
-def kill_process(proc: Process):
-    proc.kill()
-
-
 if __name__ == "__main__":
     processes = create_processes()
