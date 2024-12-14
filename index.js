@@ -39,7 +39,9 @@ class Camera {
             let username = '';
 
 
-            username = usernameRegex.exec(str);
+            try {
+                username = usernameRegex.exec(str);
+            } catch (e) { }
 
             console.log(username);
 
