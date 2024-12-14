@@ -48,7 +48,7 @@ class Camera {
             const isTPAHere = str.includes('teleport to them');
             const isTPA = str.includes('teleport');
 
-            if (isTPA) {
+            if (isTPA && !isTPAHere) {
                 this.bot.chat('/tpaccept');
             }
 
