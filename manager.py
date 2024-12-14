@@ -31,12 +31,11 @@ if __name__ == "__main__":
         if input_str.startswith("/"):
             if input_str == "/quit":
                 for process in processes:
-                    process.terminate()
+                    process.kill()
                 exit(0)
-                break
             elif input_str == "/restart":
                 for process in processes:
-                    process.terminate()
+                    process.kill()
                 processes = create_processes
             elif input_str == "/help":
                 print("Available commands:")
