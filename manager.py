@@ -18,7 +18,7 @@ def create_background_process(cmd: str):
 
 
 def create_processes():
-    procs: list[Process] = []
+    procs = []
 
     procs.append(Process(target=create_background_process, args=(SERVER,)))
 
