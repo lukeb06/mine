@@ -43,12 +43,10 @@ class Camera {
                 username = usernameRegex.exec(str)[1];
             } catch (e) { }
 
-            console.log(username);
-
             const isTPAHere = str.includes('teleport to them');
-            const isTPA = str.includes('teleport');
+            const isTPA = str.includes('teleport to you');
 
-            if (isTPA && !isTPAHere) {
+            if (isTPA) {
                 this.bot.chat('/tpaccept');
             }
 
