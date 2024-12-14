@@ -1,6 +1,7 @@
 import subprocess
 from time import sleep
 import os
+import signal
 
 JOIN_OFFSET = 5
 CAMS = ["cam0.bat", "cam1.bat", "cam2.bat"]
@@ -23,6 +24,10 @@ def create_processes():
     return processes
 
 
+def kill_process(process):
+    os.kill(process.pid, signal.SIGTERM)
+
+
 if __name__ == "__main__":
     processes = create_processes()
 
@@ -31,12 +36,10 @@ if __name__ == "__main__":
         if input_str.startswith("/"):
             if input_str == "/quit":
                 for process in processes:
-                    process.kill()
-                    process.communicate()
+                    kill_process(process)
             elif input_str == "/restart":
                 for process in processes:
-                    process.kill()
-                    process.communicate()
+                    kill_process(process)
                 processes = create_processes()
             elif input_str == "/help":
                 print("Available commands:")
