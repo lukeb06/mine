@@ -8,18 +8,22 @@ SERVER = "server.bat"
 
 
 def create_background_process(bat_file: str):
-    return subprocess.Popen(f"start {bat_file}", shell=True)
+    return subprocess.Popen(f"{bat_file}", shell=True)
 
 
 if __name__ == "__main__":
-    create_background_process(SERVER)
+    processes = []
+
+    processes.append(create_background_process(SERVER))
 
     for cam in CAMS:
-        create_background_process(cam)
+        processes.append(create_background_process(cam))
         sleep(JOIN_OFFSET)
 
     while True:
         input_str = input("> ")
         if input_str == "q":
+            for process in processes:
+                process.terminate()
             exit(0)
             break
