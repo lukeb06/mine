@@ -36,7 +36,10 @@ class Camera {
             if (!str) return;
 
             const usernameRegex = /(.*?) has requested/g
-            const username = usernameRegex.exec(str)[1];
+            let username = '';
+
+
+            username = usernameRegex.exec(str);
 
             console.log(username);
 
