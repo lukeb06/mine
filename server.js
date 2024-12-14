@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 
 function sendSteveSkin(res) {
-    const fileData = fs.readFileSync(path.join(__dirname, '../public/steve.png'))
+    const fileData = fs.readFileSync(path.join(__dirname, './public/steve.png'))
     const skinBuffer = Buffer.from(fileData, 'binary')
     res.set('Content-Type', 'image/png').send(skinBuffer)
 }
