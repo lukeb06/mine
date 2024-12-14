@@ -29,6 +29,8 @@ class Camera {
             this.bot.chat('/gmsp');
         });
 
+        const TPAHERE_USERS = ['EZcNOm', 'fish'];
+
         this.bot.on('message', message => {
             if (!message) return;
             console.log(message.toAnsi());
@@ -51,7 +53,7 @@ class Camera {
             }
 
             if (isTPAHere) {
-                if (username == 'EZc') {
+                if (TPAHERE_USERS.includes(username)) {
                     this.bot.chat('/tpaccept');
                 } else if (username) {
                     this.bot.chat(`/msg ${username} You are not allowed to do that!`)
