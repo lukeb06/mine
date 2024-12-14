@@ -29,7 +29,7 @@ def create_processes() -> list[Process]:
     for proc in procs:
         proc.start()
 
-    return threads
+    return procs
 
 
 def kill_process(proc: Process):
