@@ -2,6 +2,7 @@ import subprocess
 from time import sleep
 import os
 import signal
+from multiprocessing import Process
 
 JOIN_OFFSET = 5
 CAM_COUNT = 3
@@ -13,25 +14,26 @@ for i in range(CAM_COUNT):
 
 
 def create_background_process(cmd: str):
-    return subprocess.Popen(f"{cmd}")
+    return subprocess.run(f"{cmd}")
 
 
-def create_processes():
-    processes = []
+def create_processes() -> list[Process]:
+    threads = []
 
-    processes.append(create_background_process(SERVER))
+    threads.append(Process(target=create_background_process, args=(SERVER,)))
 
     for cam in CAMS:
-        processes.append(create_background_process(cam))
+        threads.append(Process(target=create_background_process, args=(cam,)))
         sleep(JOIN_OFFSET)
 
-    return processes
+    for thread in threads:
+        thread.start()
+
+    return threads
 
 
-def kill_process(process):
-    process.kill()
-    process.wait()
-    print(f"Process {process.pid} killed")
+def kill_process(proc: Process):
+    proc.kill()
 
 
 if __name__ == "__main__":
