@@ -11,7 +11,7 @@ def create_background_process(bat_file: str):
     return subprocess.Popen(f"{bat_file}", shell=True)
 
 
-if __name__ == "__main__":
+def create_processes():
     processes = []
 
     processes.append(create_background_process(SERVER))
@@ -20,10 +20,28 @@ if __name__ == "__main__":
         processes.append(create_background_process(cam))
         sleep(JOIN_OFFSET)
 
+    return processes
+
+
+if __name__ == "__main__":
+    processes = create_processes()
+
     while True:
         input_str = input("> ")
-        if input_str == "q":
-            for process in processes:
-                process.terminate()
-            exit(0)
-            break
+        if input_str.startswith("/"):
+            if input_str == "/quit":
+                for process in processes:
+                    process.terminate()
+                exit(0)
+                break
+            elif input_str == "/restart":
+                for process in processes:
+                    process.terminate()
+                processes = create_processes
+            elif input_str == "/help":
+                print("Available commands:")
+                print("/quit - quit the server")
+                print("/restart - restart the server")
+                print("/help - show this message")
+            else:
+                print("Unknwn command")
