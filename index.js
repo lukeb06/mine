@@ -51,7 +51,7 @@ class Camera {
             }
 
             if (isTPAHere) {
-                if (username == 'EZcNOm') {
+                if (username == 'EZc') {
                     this.bot.chat('/tpaccept');
                 } else if (username) {
                     this.bot.chat(`/msg ${username} You are not allowed to do that!`)
