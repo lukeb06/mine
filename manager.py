@@ -8,7 +8,7 @@ SERVER = "server.bat"
 
 
 def create_background_process(bat_file: str):
-    return subprocess.run(bat_file)
+    return subprocess.Popen(f"exec {bat_file}", shell=True)
 
 
 def create_processes():
