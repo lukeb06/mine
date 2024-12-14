@@ -18,16 +18,16 @@ def create_background_process(cmd: str):
 
 
 def create_processes() -> list[Process]:
-    threads = []
+    procs: list[Process] = []
 
-    threads.append(Process(target=create_background_process, args=(SERVER,)))
+    procs.append(Process(target=create_background_process, args=(SERVER,)))
 
     for cam in CAMS:
-        threads.append(Process(target=create_background_process, args=(cam,)))
+        procs.append(Process(target=create_background_process, args=(cam,)))
         sleep(JOIN_OFFSET)
 
-    for thread in threads:
-        thread.start()
+    for proc in procs:
+        proc.start()
 
     return threads
 
