@@ -16,6 +16,6 @@
     "fs": "^0.0.1-security",
     "mineflayer": "^4.23.0",
     "node-fetch": "^2.7.0",
-    "prismarine-neoviewer": "^1.29.3"
+    "prismarine-neoviewer": "^1.29.4"
   }
 }
