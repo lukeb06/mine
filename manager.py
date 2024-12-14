@@ -9,7 +9,7 @@ SERVER = "server.bat"
 
 
 def create_background_process(bat_file: str):
-    return subprocess.Popen(f"{bat_file}")
+    return subprocess.Popen(f"{bat_file}", shell=True)
 
 
 def create_processes():
@@ -25,7 +25,9 @@ def create_processes():
 
 
 def kill_process(process):
-    os.kill(process.pid, signal.SIGTERM)
+    process.kill()
+    process.wait()
+    print(f"Process {process.pid} killed")
 
 
 if __name__ == "__main__":
