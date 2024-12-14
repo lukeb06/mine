@@ -58,7 +58,7 @@ class Camera {
                     this.bot.setControlState('jump', true);
                     setTimeout(() => {
                         this.bot.setControlState('jump', false);
-                    }, 250);
+                    }, 1000);
                 } else if (username) {
                     this.bot.chat(`/msg ${username} You are not allowed to do that!`)
                     this.bot.chat('/tpdeny');
