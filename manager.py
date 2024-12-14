@@ -25,7 +25,6 @@ def create_processes():
 
 
 def kill_process(process):
-    process.send_signal(signal.SIGINT)
     process.send_signal(signal.SIGTERM)
     process.kill()
     process.wait()
