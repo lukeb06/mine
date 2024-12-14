@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
 
 function sendSteveSkin(res) {
-    const fileData = fs.readFileSync(path.join(__dirname, './public/steve.png'))
+    const fileData = fs.readFileSync(path.join(__dirname, './public/assets/skins/steve.png'))
     const skinBuffer = Buffer.from(fileData, 'binary')
     res.set('Content-Type', 'image/png').send(skinBuffer)
 }
@@ -38,6 +38,12 @@ app.get('/getSkin', async (req, res) => {
     }
 
     const name = req.query.name
+
+    if (fs.existsSync(`${__dirname}/public/assets/skins/${name}.png`)) {
+        const skin = fs.readFileSync(`${__dirname}/public/assets/skins/${name}.png`)
+        res.set('Content-Type', 'image/png').send(skin)
+        return
+    }
 
     const uuid = await fetch(`https://api.mojang.com/users/profiles/minecraft/${name}?at=${Date.now()}`)
     if (uuid.status !== 200 || uuid.length === 0) {
@@ -58,7 +64,7 @@ app.get('/getSkin', async (req, res) => {
 
     const skin = await fetch(url).then(r => r.buffer())
 
-    fs.writeFileSync(`${__dirname}/public/${name}.png`, skin)
+    fs.writeFileSync(`${__dirname}/public/assets/skins/${name}.png`, skin)
 
     res.set('Content-Type', 'image/png').send(skin)
 
