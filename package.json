@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "express": "^4.21.2",
+    "fs": "^0.0.1-security",
     "mineflayer": "^4.23.0",
     "prismarine-neoviewer": "^1.29.3"
   }
