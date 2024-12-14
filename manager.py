@@ -20,7 +20,9 @@ def create_background_process(cmd: str):
 def create_processes():
     procs = []
 
-    procs.append(Process(target=create_background_process, args=(SERVER,)))
+    proc = Process(target=create_background_process, args=(SERVER,))
+    proc.start()
+    procs.append()
 
     for cam in CAMS:
         proc = Process(target=create_background_process, args=(cam,))
