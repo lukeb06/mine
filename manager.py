@@ -39,22 +39,3 @@ def kill_process(proc: Process):
 
 if __name__ == "__main__":
     processes = create_processes()
-
-    while True:
-        input_str = input("> ")
-        if input_str.startswith("/"):
-            if input_str == "/quit":
-                for process in processes:
-                    kill_process(process)
-                break
-            elif input_str == "/restart":
-                for process in processes:
-                    kill_process(process)
-                processes = create_processes()
-            elif input_str == "/help":
-                print("Available commands:")
-                print("/quit - quit the server")
-                print("/restart - restart the server")
-                print("/help - show this message")
-            else:
-                print("Unknwn command")
