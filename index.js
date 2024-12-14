@@ -55,10 +55,6 @@ class Camera {
             if (isTPAHere) {
                 if (TPAHERE_USERS.includes(username)) {
                     this.bot.chat('/tpaccept');
-                    this.bot.setControlState('jump', true);
-                    setTimeout(() => {
-                        this.bot.setControlState('jump', false);
-                    }, 1000);
                 } else if (username) {
                     this.bot.chat(`/msg ${username} You are not allowed to do that!`)
                     this.bot.chat('/tpdeny');
