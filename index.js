@@ -31,7 +31,7 @@ class Camera {
 
         this.bot.on('message', message => {
             console.log(message.toAnsi());
-            let tpB = message.toString().includes('EZcNOm') && message.toString().includes('teleport')
+            let tpB = message.toString().includes('teleport')
             if (message && message.toString() && tpB) {
                 this.bot.chat('/tpaccept');
             }
