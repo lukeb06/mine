@@ -58,7 +58,11 @@ app.get('/getSkin', async (req, res) => {
     const skin = await fetch(url).then(r => r.buffer())
     res.set('Content-Type', 'image/png').send(skin)
 
-})
+});
+
+app.get('/steve', (req, res) => {
+    sendSteveSkin(res);
+});
 
 app.listen(3008, () => {
     console.log(`http://localhost:3008`);
