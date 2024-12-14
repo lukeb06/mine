@@ -40,7 +40,7 @@ class Camera {
 
 
             try {
-                username = usernameRegex.exec(str);
+                username = usernameRegex.exec(str)[1];
             } catch (e) { }
 
             console.log(username);
