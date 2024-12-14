@@ -4,12 +4,16 @@ import os
 import signal
 
 JOIN_OFFSET = 5
-CAMS = ["cam0.bat", "cam1.bat", "cam2.bat"]
-SERVER = "server.bat"
+CAM_COUNT = 3
+SERVER = "node server.js"
+
+CAMS = []
+for i in range(CAM_COUNT):
+    CAMS.append(f"node index.js {i}")
 
 
-def create_background_process(bat_file: str):
-    return subprocess.Popen(f"{bat_file}", shell=True)
+def create_background_process(cmd: str):
+    return subprocess.Popen(f"{cmd}", shell=True)
 
 
 def create_processes():
@@ -25,7 +29,6 @@ def create_processes():
 
 
 def kill_process(process):
-    process.send_signal(signal.SIGTERM)
     process.kill()
     process.wait()
     print(f"Process {process.pid} killed")
