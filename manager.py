@@ -29,7 +29,7 @@ def create_processes():
 
 
 def kill_process(process):
-    process.kill()
+    process.terminate()
     process.wait()
     print(f"Process {process.pid} killed")
 
