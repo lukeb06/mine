@@ -30,10 +30,27 @@ class Camera {
         });
 
         this.bot.on('message', message => {
+            if (!message) return;
             console.log(message.toAnsi());
-            let tpB = message.toString().includes('teleport')
-            if (message && message.toString() && tpB) {
+            const str = message.toString();
+            if (!str) return;
+
+            const usernameRegex = /(.*?) has requested/g
+            const username = usernameRegex.exec(str)[1];
+
+            console.log(username);
+
+            const isTPAHere = str.includes('teleport to them');
+            const isTPA = str.includes('teleport');
+
+            if (isTPA) {
                 this.bot.chat('/tpaccept');
+            }
+
+            if (isTPAHere) {
+                if (username == 'EZcNOm' || username == 'fish') {
+                    this.bot.chat('/tpaccept');
+                }
             }
         });
 
