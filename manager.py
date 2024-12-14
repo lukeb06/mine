@@ -14,7 +14,7 @@ for i in range(CAM_COUNT):
 
 
 def create_background_process(cmd: str):
-    return subprocess.run(f"{cmd}", shell=True)
+    return subprocess.run(f"{cmd}")
 
 
 def create_processes():
