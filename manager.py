@@ -36,7 +36,7 @@ if __name__ == "__main__":
             elif input_str == "/restart":
                 for process in processes:
                     process.kill()
-                processes = create_processes
+                processes = create_processes()
             elif input_str == "/help":
                 print("Available commands:")
                 print("/quit - quit the server")
