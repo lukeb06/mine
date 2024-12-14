@@ -39,8 +39,10 @@ app.get('/getSkin', async (req, res) => {
 
     const name = req.query.name
 
-    if (fs.existsSync(`${__dirname}/public/assets/skins/${name}.png`)) {
-        const skin = fs.readFileSync(`${__dirname}/public/assets/skins/${name}.png`)
+    const file = `${__dirname}/public/assets/skins/${name}.png`;
+
+    if (fs.existsSync(file)) {
+        const skin = fs.readFileSync(file)
         res.set('Content-Type', 'image/png').send(skin)
         return
     }
@@ -64,7 +66,7 @@ app.get('/getSkin', async (req, res) => {
 
     const skin = await fetch(url).then(r => r.buffer())
 
-    fs.writeFileSync(`${__dirname}/public/assets/skins/${name}.png`, skin)
+    fs.writeFileSync(file, skin)
 
     res.set('Content-Type', 'image/png').send(skin)
 
