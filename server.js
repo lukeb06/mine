@@ -20,6 +20,14 @@ app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/public/index.html`);
 });
 
+
+function sendSteveSkin(res) {
+    const fileData = fs.readFileSync(path.join(__dirname, '../public/steve.png'))
+    const skinBuffer = Buffer.from(fileData, 'binary')
+    res.set('Content-Type', 'image/png').send(skinBuffer)
+}
+
+
 app.get('/getSkin', async (req, res) => {
     if (!req.query.name || req.query.name === 'undefined') {
         sendSteveSkin(res)
