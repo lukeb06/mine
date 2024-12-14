@@ -1,2 +1,3 @@
+:loop
 node index.js 0
-exit
+goto loop

@@ -65,9 +65,11 @@ class Camera {
         this.bot.on('kicked', (d) => {
             console.log(d);
             console.log('Kicked');
-            console.log(d.value.extra);
+            process.exit(1);
         });
-        this.bot.on('error', console.log);
+        this.bot.on('error', () => {
+            process.exit(1);
+        });
     }
 }
 
