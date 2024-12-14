@@ -1,6 +1,19 @@
 const express = require('express');
 const app = express();
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Request-Method', '*');
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET');
+    res.header('Access-Control-Allow-Headers', '*');
+
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    }
+
+    next();
+})
+
 app.use(express.static(`${__dirname}/public`));
 
 app.get('/', (req, res) => {
