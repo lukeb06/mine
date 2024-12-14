@@ -29,7 +29,7 @@ def create_processes():
 
 
 def kill_process(process):
-    process.terminate()
+    process.kill()
     process.wait()
     print(f"Process {process.pid} killed")
 
@@ -43,6 +43,7 @@ if __name__ == "__main__":
             if input_str == "/quit":
                 for process in processes:
                     kill_process(process)
+                os.exit(0)
             elif input_str == "/restart":
                 for process in processes:
                     kill_process(process)
