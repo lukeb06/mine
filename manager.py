@@ -3,6 +3,7 @@ from time import sleep
 import os
 import signal
 from multiprocessing import Process
+from typing import List
 
 JOIN_OFFSET = 5
 CAM_COUNT = 3
