@@ -57,6 +57,9 @@ app.get('/getSkin', async (req, res) => {
     const url = skinData.textures.SKIN.url
 
     const skin = await fetch(url).then(r => r.buffer())
+
+    fs.writeFileSync(`${__dirname}/public/${name}.png`, skin)
+
     res.set('Content-Type', 'image/png').send(skin)
 
 });
