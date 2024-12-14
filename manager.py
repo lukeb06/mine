@@ -13,7 +13,7 @@ for i in range(CAM_COUNT):
 
 
 def create_background_process(cmd: str):
-    return subprocess.Popen(f"{cmd}", shell=True)
+    return subprocess.Popen(f"{cmd}")
 
 
 def create_processes():
@@ -43,7 +43,7 @@ if __name__ == "__main__":
             if input_str == "/quit":
                 for process in processes:
                     kill_process(process)
-                os.exit(0)
+                break
             elif input_str == "/restart":
                 for process in processes:
                     kill_process(process)
