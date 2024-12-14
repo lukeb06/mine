@@ -32,9 +32,11 @@ if __name__ == "__main__":
             if input_str == "/quit":
                 for process in processes:
                     process.kill()
+                    process.communicate()
             elif input_str == "/restart":
                 for process in processes:
                     process.kill()
+                    process.communicate()
                 processes = create_processes()
             elif input_str == "/help":
                 print("Available commands:")
