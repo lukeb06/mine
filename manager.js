@@ -1,4 +1,5 @@
 const { fork } = require('child_process');
+const readline = require('readline');
 
 const JOIN_OFFSET = 7; // seconds
 const CAM_COUNT = 3;
@@ -8,6 +9,10 @@ class Process {
     constructor(file) {
         this.file = file;
         this.proc = fork(file);
+    }
+
+    send(data) {
+        this.proc.send(data);
     }
 }
 
@@ -37,12 +42,12 @@ class CamProcess extends Process {
                     console.log(`CAM CHAT: ${data.username}: ${data.message}`);
                     break;
                 case 'requestTPA':
-                    if (!data.username) return this.proc.send({ event: 'denyTPA' });
+                    if (!data.username) return this.send({ event: 'denyTPA' });
 
                     const ALLOWED_USERS = ['EZcNOm', 'fish'];
 
-                    if (ALLOWED_USERS.includes(data.username)) this.proc.send({ event: 'acceptTPA', username: data.username });
-                    else this.proc.send({ event: 'denyTPA', username: data.username });
+                    if (ALLOWED_USERS.includes(data.username)) this.send({ event: 'acceptTPA', username: data.username });
+                    else this.send({ event: 'denyTPA', username: data.username });
 
                     break;
                 default:
@@ -53,7 +58,7 @@ class CamProcess extends Process {
     }
 
     startCam() {
-        this.proc.send({ event: 'startCam', index: this.index });
+        this.send({ event: 'startCam', index: this.index });
     }
 }
 
@@ -77,11 +82,27 @@ function createCams() {
     return Promise.all(cams);
 }
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+function prompt(message) {
+    return new Promise(resolve => {
+        rl.question(message, answer => {
+            resolve(answer);
+        })
+    });
+}
+
 async function main() {
     const serverProc = new ServerProcess();
     const camProcs = await createCams();
 
-
+    while (true) {
+        const answer = await prompt('> ');
+        camProces[0].send({ event: 'chat', message: answer });
+    }
 }
 
 main();

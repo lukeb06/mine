@@ -61,6 +61,9 @@ class Camera {
                     if (data.username)
                         this.bot.chat(`/msg ${data.username} You are not allowed to do that!`)
                     this.bot.chat('/tpdeny');
+                case 'chat':
+                    this.bot.chat(data.message);
+                    break;
                 default:
                     console.log('Unknown event:', data.event);
                     break;
