@@ -1,3 +1,5 @@
+const ONLINE_CAMS = [];
+
 function registerCamera(camera) {
     return new Promise(async (resolve, reject) => {
         const index = +camera.dataset.index;
@@ -10,18 +12,25 @@ function registerCamera(camera) {
 
         const viewBtn = document.createElement('a');
         viewBtn.className = 'view-btn';
-        viewBtn.href = `http://${window.location.hostname}/cam${index}`;
+        viewBtn.href = `${window.location.protocol}://${window.location.hostname}/cam${index}`;
         viewBtn.textContent = 'Control Cam';
         wrapper.appendChild(viewBtn);
 
-        camera.src = `http://${window.location.hostname}/cam${index}`;
+        camera.src = `${window.location.protocol}://${window.location.hostname}/cam${index}`;
 
         const { ok } = await fetch(camera.src, { mode: 'no-cors' })
         if (!ok) return resolve();
         camera.classList.add('active');
         wrapper.classList.add('active');
+        ONLINE_CAMS.push(index);
         resolve();
     });
+}
+
+function genCamCommand(cmd) {
+    if (ONLINE_CAMS.length === 0) throw new Error('No online cams');
+    const index = ONLINE_CAMS[0];
+    return `/msg mrcamera${index} ${cmd}`;
 }
 
 async function main() {
