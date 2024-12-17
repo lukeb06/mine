@@ -12,11 +12,11 @@ function registerCamera(camera) {
 
         const viewBtn = document.createElement('a');
         viewBtn.className = 'view-btn';
-        viewBtn.href = `${window.location.protocol}://${window.location.hostname}/cam${index}`;
+        viewBtn.href = `${window.location.protocol}//${window.location.hostname}/cam${index}`;
         viewBtn.textContent = 'Control Cam';
         wrapper.appendChild(viewBtn);
 
-        camera.src = `${window.location.protocol}://${window.location.hostname}/cam${index}`;
+        camera.src = `${window.location.protocol}//${window.location.hostname}/cam${index}`;
 
         const { ok } = await fetch(camera.src, { mode: 'no-cors' })
         if (!ok) return resolve();
