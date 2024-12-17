@@ -101,7 +101,7 @@ async function main() {
 
     while (true) {
         const answer = await prompt('> ');
-        camProces[0].send({ event: 'chat', message: answer });
+        camProcs[0].send({ event: 'chat', message: answer });
     }
 }
 
