@@ -17,6 +17,8 @@ class ServerProcess extends Process {
     }
 }
 
+const MESSAGE_MAP = new Map();
+
 class CamProcess extends Process {
     constructor(index) {
         super(`index.js`);
@@ -27,7 +29,20 @@ class CamProcess extends Process {
 
             switch (data.event) {
                 case 'chat':
-                    console.log(`CAM ${this.index}: ${data.username}: ${data.message}`);
+                    const id = Math.floor(Date.now() / 2000);
+                    if (MESSAGE_MAP.has(id)) break;
+
+                    MESSAGE_MAP.set(id, data);
+                    console.log(`CAM CHAT: ${data.username}: ${data.message}`);
+                    break;
+                case 'requestTPA':
+                    if (!data.username) return this.proc.send({ event: 'denyTPA' });
+
+                    const ALLOWED_USERS = ['EZcNOm', 'fish'];
+
+                    if (ALLOWED_USERS.includes(data.username)) this.proc.send({ event: 'acceptTPA', username: data.username });
+                    else this.proc.send({ event: 'denyTPA', username: data.username });
+
                     break;
                 default:
                     console.log('Unknown event:', data.event);

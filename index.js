@@ -29,8 +29,6 @@ class Camera {
             this.bot.chat('/gmsp');
         });
 
-        const TPAHERE_USERS = ['EZcNOm', 'fish'];
-
         this.bot.on('message', message => {
             if (!message) return;
             console.log(message.toAnsi());
@@ -48,17 +46,24 @@ class Camera {
             const isTPAHere = str.includes('teleport to them');
             const isTPA = str.includes('teleport to you');
 
-            if (isTPA) {
-                this.bot.chat('/tpaccept');
-            }
+            if (isTPA) this.bot.chat('/tpaccept');
+            if (isTPAHere) process.send({ event: 'requestTPA', username });
+        });
 
-            if (isTPAHere) {
-                if (TPAHERE_USERS.includes(username)) {
+        process.on('message', data => {
+            if (!data.event) return;
+
+            switch (data.event) {
+                case 'acceptTPA':
                     this.bot.chat('/tpaccept');
-                } else if (username) {
-                    this.bot.chat(`/msg ${username} You are not allowed to do that!`)
+                    break;
+                case 'denyTPA':
+                    if (data.username)
+                        this.bot.chat(`/msg ${data.username} You are not allowed to do that!`)
                     this.bot.chat('/tpdeny');
-                }
+                default:
+                    console.log('Unknown event:', data.event);
+                    break;
             }
         });
 
