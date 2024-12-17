@@ -78,9 +78,11 @@ class Camera {
         this.bot.on('kicked', (d) => {
             console.log(d);
             console.log('Kicked');
+            process.send({ event: 'crash', reason: 'kicked', index: this.index });
             process.exit(1);
         });
         this.bot.on('error', () => {
+            process.send({ event: 'crash', reason: 'error', index: this.index });
             process.exit(1);
         });
     }

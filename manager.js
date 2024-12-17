@@ -9,10 +9,28 @@ class Process {
     constructor(file) {
         this.file = file;
         this.proc = fork(file);
+        this.initProc();
     }
 
     send(data) {
         this.proc.send(data);
+    }
+
+    regenProc() {
+        this.proc = fork(this.file);
+        this.initProc();
+    }
+
+    initProc() {
+        this.proc.on('message', data => {
+            if (!data.event) return;
+
+            switch (data.event) {
+                default:
+                    console.log('Unknown event:', data.event);
+                    break;
+            }
+        })
     }
 }
 
@@ -29,6 +47,9 @@ class CamProcess extends Process {
         super(`index.js`);
         this.index = index;
 
+    }
+
+    initProc() {
         this.proc.on('message', data => {
             if (!data.event) return;
 
@@ -50,6 +71,11 @@ class CamProcess extends Process {
                     else this.send({ event: 'denyTPA', username: data.username });
 
                     break;
+                case 'crash':
+                    console.log(`CAM CRASHED: ${data.reason}`);
+                    this.regenProc();
+                    break;
+
                 default:
                     console.log('Unknown event:', data.event);
                     break;
