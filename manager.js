@@ -30,7 +30,7 @@ class Process {
                     console.log('Unknown event:', data.event);
                     break;
             }
-        })
+        });
     }
 }
 
@@ -124,13 +124,6 @@ function prompt(message) {
 }
 
 async function main() {
-    process.stdout.on('data', data => {
-        const str = data.toString();
-        if (!str) return;
-
-        console.log(str);
-    });
-
     const serverProc = new ServerProcess();
     const camProcs = await createCams();
 
