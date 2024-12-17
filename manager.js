@@ -124,7 +124,7 @@ function prompt(message) {
 }
 
 async function main() {
-    stdout.on('data', data => {
+    process.stdout.on('data', data => {
         const str = data.toString();
         if (!str) return;
 
