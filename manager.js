@@ -29,7 +29,8 @@ class CamProcess extends Process {
 
             switch (data.event) {
                 case 'chat':
-                    const id = Math.floor(Date.now() / 2000);
+                    const ts = Math.floor(Date.now() / 2000);
+                    const id = `${ts}-${data.username}-${data.message}`
                     if (MESSAGE_MAP.has(id)) break;
 
                     MESSAGE_MAP.set(id, data);
