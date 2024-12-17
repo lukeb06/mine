@@ -62,6 +62,10 @@ class Camera {
             }
         });
 
+        this.bot.on('chat', (username, message) => {
+            console.log(`CHAT: ${username}: ${message}`)
+        });
+
         this.bot.on('kicked', (d) => {
             console.log(d);
             console.log('Kicked');
