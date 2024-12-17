@@ -80,4 +80,17 @@ async function main(index) {
     cam.init();
 }
 
-main(process.argv.at(-1));
+//main(process.argv.at(-1));
+
+process.on('message', data => {
+    if (!data.event) return;
+
+    switch (data.event) {
+        case 'startCam':
+            main(data.index);
+            break;
+        default:
+            console.log('Unknown event:', data.event);
+            break;
+    }
+});

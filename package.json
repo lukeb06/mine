@@ -2,7 +2,7 @@
   "name": "mine",
   "module": "index.ts",
   "scripts": {
-    "start": "activate.bat && start py manager.py"
+    "start": "node manager.js"
   },
   "devDependencies": {
     "@types/bun": "latest",
