@@ -67,7 +67,9 @@ function createCam(index) {
         const cam = new CamProcess(index);
         setTimeout(() => {
             cam.startCam();
-            resolve();
+            setTimeout(() => {
+                resolve(cam);
+            }, 2000);
         }, index * JOIN_OFFSET * 1000);
     });
 }
