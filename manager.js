@@ -69,7 +69,7 @@ function createCam(index) {
             cam.startCam();
             setTimeout(() => {
                 resolve(cam);
-            }, 2000);
+            }, 3000);
         }, index * JOIN_OFFSET * 1000);
     });
 }
@@ -103,7 +103,7 @@ async function main() {
 
     while (true) {
         const answer = await prompt('> ');
-        camProcs[0].send({ event: 'chat', message: answer });
+        camProcs.forEach(cam => cam.send({ event: 'chat', message: answer }));
     }
 }
 
