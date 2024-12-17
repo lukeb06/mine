@@ -96,14 +96,5 @@ async function main(index) {
 //main(process.argv.at(-1));
 
 process.on('message', data => {
-    if (!data.event) return;
-
-    switch (data.event) {
-        case 'startCam':
-            main(data.index);
-            break;
-        default:
-            console.log('Unknown event:', data.event);
-            break;
-    }
+    if (data.event && data.event === 'startCam') main(data.index);
 });
