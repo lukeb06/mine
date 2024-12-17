@@ -21,6 +21,19 @@ class CamProcess extends Process {
     constructor(index) {
         super(`index.js`);
         this.index = index;
+
+        this.proc.on('message', data => {
+            if (!data.event) return;
+
+            switch (data.event) {
+                case 'chat':
+                    console.log(`CAM ${this.index}: ${data.username}: ${data.message}`);
+                    break;
+                default:
+                    console.log('Unknown event:', data.event);
+                    break;
+            }
+        });
     }
 
     startCam() {
@@ -51,6 +64,8 @@ function createCams() {
 async function main() {
     const serverProc = new ServerProcess();
     const camProcs = await createCams();
+
+
 }
 
 main();
