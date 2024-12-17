@@ -1,6 +1,6 @@
 const { fork } = require('child_process');
 
-const JOIN_OFFSET = 5; // seconds
+const JOIN_OFFSET = 7; // seconds
 const CAM_COUNT = 3;
 
 
