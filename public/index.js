@@ -16,14 +16,11 @@ function registerCamera(camera) {
 
         camera.src = `http://${window.location.hostname}/cam${index}`;
 
-        try {
-            await fetch(camera.src, { mode: 'no-cors' })
-            camera.classList.add('active');
-            wrapper.classList.add('active');
-            resolve();
-        } catch (e) {
-            resolve();
-        }
+        const { ok } = await fetch(camera.src, { mode: 'no-cors' })
+        if (!ok) return resolve();
+        camera.classList.add('active');
+        wrapper.classList.add('active');
+        resolve();
     });
 }
 
