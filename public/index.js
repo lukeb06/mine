@@ -1,7 +1,6 @@
 function registerCamera(camera) {
     return new Promise(async (resolve, reject) => {
         const index = +camera.dataset.index;
-        const port = 6027 - index;
 
         const wrapper = document.createElement('div');
         wrapper.className = 'camera-wrapper';
@@ -11,11 +10,11 @@ function registerCamera(camera) {
 
         const viewBtn = document.createElement('a');
         viewBtn.className = 'view-btn';
-        viewBtn.href = `http://${window.location.hostname}:${port}`;
+        viewBtn.href = `http://${window.location.hostname}/cam${index}`;
         viewBtn.textContent = 'Control Cam';
         wrapper.appendChild(viewBtn);
 
-        camera.src = `http://${window.location.hostname}:${port}`;
+        camera.src = `http://${window.location.hostname}/cam${index}`;
 
         try {
             await fetch(camera.src, { mode: 'no-cors' })
