@@ -82,7 +82,7 @@ class CamProcess extends Process {
                     if (MESSAGE_MAP.has(mid)) break;
 
                     MESSAGE_MAP.set(mid, data);
-                    CONSOLE.log(`CAM ${this.index} CHAT: ${data.message}`);
+                    CONSOLE.log(`CAM ${data.showIndex ? `${this.index} ` : ''}CHAT: ${data.message}`);
 
                     break;
                 default:
