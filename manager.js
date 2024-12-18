@@ -1,9 +1,12 @@
 const { fork } = require('child_process');
 const readline = require('readline');
 
+const { Console } = require('./console');
+
 const JOIN_OFFSET = 7; // seconds
 const CAM_COUNT = 3;
 
+const CONSOLE = new Console();
 
 class Process {
     constructor(file) {
@@ -27,7 +30,7 @@ class Process {
 
             switch (data.event) {
                 default:
-                    console.log('Unknown event:', data.event);
+                    CONSOLE.log('Unknown event:', data.event);
                     break;
             }
         });
@@ -60,7 +63,7 @@ class CamProcess extends Process {
                     if (MESSAGE_MAP.has(id)) break;
 
                     MESSAGE_MAP.set(id, data);
-                    console.log(`CAM CHAT: ${data.username}: ${data.message}`);
+                    CONSOLE.log(`CAM CHAT: ${data.username}: ${data.message}`);
                     break;
                 case 'requestTPA':
                     if (!data.username) return this.send({ event: 'denyTPA' });
@@ -72,12 +75,20 @@ class CamProcess extends Process {
 
                     break;
                 case 'crash':
-                    console.log(`CAM CRASHED: ${data.reason}`);
+                    CONSOLE.log(`CAM CRASHED: ${data.reason}`);
                     this.regenProc();
                     break;
+                case 'message':
+                    const mts = Math.floor(Date.now() / 100);
+                    const mid = `${mts}-${data.index}-${data.message}`
+                    if (MESSAGE_MAP.has(mid)) break;
 
+                    MESSAGE_MAP.set(mid, data);
+                    CONSOLE.log(`CAM ${data.index} CHAT: ${data.message}`);
+
+                    break;
                 default:
-                    console.log('Unknown event:', data.event);
+                    CONSOLE.log('Unknown event:', data.event);
                     break;
             }
         });
@@ -127,10 +138,9 @@ async function main() {
     const serverProc = new ServerProcess();
     const camProcs = await createCams();
 
-    while (true) {
-        const answer = await prompt('> ');
-        camProcs.forEach(cam => cam.send({ event: 'chat', message: answer }));
-    }
+    CONSOLE.onInput(input => {
+        camProcs.forEach(cam => cam.send({ event: 'chat', message: input }));
+    });
 }
 
 main();

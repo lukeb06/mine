@@ -31,13 +31,13 @@ class Camera {
 
         this.bot.on('message', message => {
             if (!message) return;
-            console.log(message.toAnsi());
             const str = message.toString();
             if (!str) return;
 
+            process.send({ event: 'message', message: message.toAnsi(), index: this.index });
+
             const usernameRegex = /(.*?) has requested/g
             let username = '';
-
 
             try {
                 username = usernameRegex.exec(str)[1];
