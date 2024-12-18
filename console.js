@@ -67,6 +67,7 @@ class Console {
     }
 
     clearOutput() {
+        this.outputBuffer = [];
         console.log(new Array(process.stdout.rows).fill('\n').join(''));
     }
 
