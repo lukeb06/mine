@@ -66,8 +66,12 @@ class Console {
         });
     }
 
+    clearOutput() {
+        console.log(new Array(process.stdout.rows).fill('\n').join(''));
+    }
+
     render() {
-        console.clear();
+        this.clearOutput();
         //process.stdout.write(this.outputBuffer);
         this.renderOutput();
         process.stdout.write(this.separator);
