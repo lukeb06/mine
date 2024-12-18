@@ -62,7 +62,6 @@ class CamProcess extends Process {
                     if (MESSAGE_MAP.has(id)) break;
 
                     MESSAGE_MAP.set(id, data);
-                    CONSOLE.log(`CAM CHAT: ${data.username}: ${data.message}`);
                     break;
                 case 'requestTPA':
                     if (!data.username) return this.send({ event: 'denyTPA' });
