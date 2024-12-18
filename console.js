@@ -56,7 +56,7 @@ class Console {
             }
 
             this.inputBuffer += key;
-            process.stdout.write(key);
+            //process.stdout.write(key);
         });
     }
 
