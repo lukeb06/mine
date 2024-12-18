@@ -73,7 +73,7 @@ class CamProcess extends Process {
 
                     break;
                 case 'crash':
-                    CONSOLE.log(`CAM CRASHED: ${data.reason}`);
+                    CONSOLE.log(`CAM ${this.index} CRASHED: ${data.reason}`);
                     this.regenProc();
                     break;
                 case 'message':
@@ -82,7 +82,7 @@ class CamProcess extends Process {
                     if (MESSAGE_MAP.has(mid)) break;
 
                     MESSAGE_MAP.set(mid, data);
-                    CONSOLE.log(`CAM ${data.index} CHAT: ${data.message}`);
+                    CONSOLE.log(`CAM ${this.index} CHAT: ${data.message}`);
 
                     break;
                 default:

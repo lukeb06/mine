@@ -34,7 +34,7 @@ class Camera {
             const str = message.toString();
             if (!str) return;
 
-            process.send({ event: 'message', message: message.toAnsi(), index: this.index });
+            process.send({ event: 'message', message: message.toAnsi() });
 
             const usernameRegex = /(.*?) has requested/g
             let username = '';
@@ -74,11 +74,11 @@ class Camera {
         });
 
         this.bot.on('kicked', (d) => {
-            process.send({ event: 'crash', reason: 'kicked', index: this.index });
+            process.send({ event: 'crash', reason: 'kicked' });
             process.exit(1);
         });
         this.bot.on('error', () => {
-            process.send({ event: 'crash', reason: 'error', index: this.index });
+            process.send({ event: 'crash', reason: 'error' });
             process.exit(1);
         });
     }
