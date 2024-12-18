@@ -76,6 +76,4 @@ app.get('/steve', (req, res) => {
     sendSteveSkin(res);
 });
 
-app.listen(3008, () => {
-    console.log(`http://localhost:3008`);
-});
+app.listen(3008);
