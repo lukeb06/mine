@@ -65,19 +65,15 @@ class Camera {
                     this.bot.chat(data.message);
                     break;
                 default:
-                    console.log('Unknown event:', data.event);
                     break;
             }
         });
 
         this.bot.on('chat', (username, message) => {
-            console.log(`CHAT: ${username}: ${message}`)
             process.send({ event: 'chat', username, message });
         });
 
         this.bot.on('kicked', (d) => {
-            console.log(d);
-            console.log('Kicked');
             process.send({ event: 'crash', reason: 'kicked', index: this.index });
             process.exit(1);
         });
@@ -90,7 +86,6 @@ class Camera {
 
 
 async function main(index) {
-    console.log(`Starting camera ${index}...`);
     const cam = new Camera(index);
     cam.init();
 }

@@ -49,7 +49,6 @@ class CamProcess extends Process {
     constructor(index) {
         super(`index.js`);
         this.index = index;
-
     }
 
     initProc() {
@@ -95,6 +94,7 @@ class CamProcess extends Process {
     }
 
     startCam() {
+        CONSOLE.log(`Starting camera ${this.index}...`);
         this.send({ event: 'startCam', index: this.index });
     }
 }
@@ -135,6 +135,7 @@ function prompt(message) {
 }
 
 async function main() {
+    CONSOLE.log('Starting server...');
     const serverProc = new ServerProcess();
     const camProcs = await createCams();
 
