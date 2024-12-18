@@ -4,7 +4,7 @@ const readline = require('readline');
 const { Console } = require('./console');
 
 const JOIN_OFFSET = 7; // seconds
-const CAM_COUNT = 3;
+const CAM_COUNT = 4;
 
 const CONSOLE = new Console();
 
