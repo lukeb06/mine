@@ -80,7 +80,7 @@ class CamProcess extends Process {
                     break;
                 case 'message':
                     const mts = Math.floor(Date.now() / 100);
-                    const mid = `${mts}-${data.index}-${data.message}`
+                    const mid = `${mts}-${data.message}`
                     if (MESSAGE_MAP.has(mid)) break;
 
                     MESSAGE_MAP.set(mid, data);
