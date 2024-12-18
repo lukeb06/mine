@@ -67,7 +67,9 @@ class Console {
     }
 
     clearOutput() {
-        this.outputBuffer = [];
+        const start = this.outputBuffer.length - process.stdout.rows;
+        if (start > 0) this.outputBuffer = this.outputBuffer.slice(start, this.outputBuffer.length);
+
         console.log(new Array(process.stdout.rows).fill('\n').join(''));
     }
 
