@@ -77,7 +77,7 @@ class CamProcess extends Process {
                     this.regenProc();
                     break;
                 case 'message':
-                    const mts = Math.floor(Date.now() / 100);
+                    const mts = Math.floor(Date.now() / 2000);
                     const mid = `${mts}-${data.message}`
                     if (MESSAGE_MAP.has(mid)) break;
 
